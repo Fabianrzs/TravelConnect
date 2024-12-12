@@ -12,7 +12,7 @@ public class TokenService(string secretKey, string issuer, string audience) : IT
     private readonly string _issuer = issuer ?? throw new ArgumentNullException(nameof(issuer));
     private readonly string _audience = audience ?? throw new ArgumentNullException(nameof(audience));
 
-    public string GenerateToken(string username, Guid userId, IEnumerable<string> roles)
+    public string GenerateToken(string username, Guid userId)
     {
         var claims = new List<Claim>
         {
@@ -20,8 +20,6 @@ public class TokenService(string secretKey, string issuer, string audience) : IT
             new (JwtRegisteredClaimNames.UniqueName, username),
             new (JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
         };
-
-        claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secretKey));
         var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace TravelConnect.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class firts : Migration
+    public partial class Firts : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,8 +17,8 @@ namespace TravelConnect.Infrastructure.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     City = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
                     State = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -33,8 +33,8 @@ namespace TravelConnect.Infrastructure.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
                     State = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -50,8 +50,8 @@ namespace TravelConnect.Infrastructure.Migrations
                     Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     IsActive = table.Column<bool>(type: "bit", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
                     State = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -68,8 +68,8 @@ namespace TravelConnect.Infrastructure.Migrations
                     AddressId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IsEnabled = table.Column<bool>(type: "bit", nullable: false),
                     TravelAgentId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
                     State = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -99,8 +99,8 @@ namespace TravelConnect.Infrastructure.Migrations
                     Taxes = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     IsEnabled = table.Column<bool>(type: "bit", nullable: false),
                     Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
                     State = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -126,8 +126,8 @@ namespace TravelConnect.Infrastructure.Migrations
                     EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     TotalCost = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
                     State = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -161,8 +161,8 @@ namespace TravelConnect.Infrastructure.Migrations
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ReservationId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
+                    LastModifiedOn = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValueSql: "GETDATE()"),
                     State = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>

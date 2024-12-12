@@ -24,8 +24,4 @@
     <ProjectReference Include="..\TravelConnect.Domain\TravelConnect.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Adapters\Notifications\" />
-  </ItemGroup>
-
 </Project>

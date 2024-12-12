@@ -11,7 +11,7 @@ public class EncryptionService(string encryptionKey) : IEncryptionService
     public string Encrypt(string plainText)
     {
         using var aes = Aes.Create();
-        var key = Encoding.UTF8.GetBytes(_encryptionKey.PadRight(32));
+        var key = Convert.FromBase64String(_encryptionKey);
         aes.Key = key;
         aes.IV = new byte[16];
 
@@ -29,7 +29,7 @@ public class EncryptionService(string encryptionKey) : IEncryptionService
     public string Decrypt(string cipherText)
     {
         using var aes = Aes.Create();
-        var key = Encoding.UTF8.GetBytes(_encryptionKey.PadRight(32));
+        var key = Convert.FromBase64String(_encryptionKey);
         aes.Key = key;
         aes.IV = new byte[16];
 

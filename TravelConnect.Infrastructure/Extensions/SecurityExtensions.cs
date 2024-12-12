@@ -12,7 +12,9 @@ public static class SecurityExtensions
 {
     public static IServiceCollection AddSecurityServices(this IServiceCollection services, IConfiguration configuration)
     {
-
+        var fuap = configuration["JwtSettings:Key"]!;
+        var fuap1 = configuration["JwtSettings:Issuer"]!;
+        var fuap2 = configuration["JwtSettings:Audience"];
 
         services.AddScoped<IPasswordHasher, PasswordHasher>();
 
@@ -30,15 +32,15 @@ public static class SecurityExtensions
                 ClockSkew = TimeSpan.Zero,
                 ValidIssuer = configuration["JwtSettings:Issuer"],
                 ValidAudience = configuration["JwtSettings:Audience"],
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtSettings:key"]!))
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtSettings:Key"]!))
             };
         });
 
         services.AddScoped<ITokenService>(provider =>
             new TokenService(
-                configuration["Jwt:SecretKey"]!,
-                configuration["Jwt:Issuer"]!,
-                configuration["Jwt:Audience"]!
+                configuration["JwtSettings:Key"]!,
+                configuration["JwtSettings:Issuer"]!,
+                configuration["JwtSettings:Audience"]!
             ));
 
         services.AddScoped<IEncryptionService>(provider =>

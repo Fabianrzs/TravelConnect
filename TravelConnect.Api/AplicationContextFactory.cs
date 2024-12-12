@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
-using TravelConnect.Infrastructure.Adapters.Persistence.DbContexts;
+using TravelConnect.Infrastructure.Adapters.Persistence;
 
 namespace TravelConnect.Api;
 

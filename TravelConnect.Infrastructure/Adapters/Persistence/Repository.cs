@@ -2,9 +2,8 @@
 using System.Linq.Expressions;
 using TravelConnect.Domain.Entities.Base;
 using TravelConnect.Domain.Ports.Persistence;
-using TravelConnect.Infrastructure.Adapters.Persistence.DbContexts;
 
-namespace TravelConnect.Infrastructure.Adapters.Persistence.Repositories;
+namespace TravelConnect.Infrastructure.Adapters.Persistence;
 
 public class Repository<T> : IRepository<T> where T : EntityBase
 {

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TravelConnect.Infrastructure.Adapters.Persistence.DbContexts;
+using TravelConnect.Infrastructure.Adapters.Persistence;
 
 #nullable disable
 
@@ -29,14 +29,18 @@ namespace TravelConnect.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("FullName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("LastModifiedOn")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
@@ -60,7 +64,9 @@ namespace TravelConnect.Infrastructure.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("DocumentNumber")
                         .IsRequired()
@@ -82,7 +88,9 @@ namespace TravelConnect.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<DateTime>("LastModifiedOn")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -115,13 +123,17 @@ namespace TravelConnect.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<bool>("IsEnabled")
                         .HasColumnType("bit");
 
                     b.Property<DateTime>("LastModifiedOn")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -149,7 +161,9 @@ namespace TravelConnect.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<Guid>("EmergencyContactId")
                         .HasColumnType("uniqueidentifier");
@@ -161,7 +175,9 @@ namespace TravelConnect.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("LastModifiedOn")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<Guid>("RoomId")
                         .HasColumnType("uniqueidentifier");
@@ -197,7 +213,9 @@ namespace TravelConnect.Infrastructure.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<Guid>("HotelId")
                         .HasColumnType("uniqueidentifier");
@@ -206,7 +224,9 @@ namespace TravelConnect.Infrastructure.Migrations
                         .HasColumnType("bit");
 
                     b.Property<DateTime>("LastModifiedOn")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("Location")
                         .IsRequired()
@@ -235,13 +255,17 @@ namespace TravelConnect.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<DateTime>("LastModifiedOn")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<string>("PasswordHash")
                         .IsRequired()
@@ -270,10 +294,14 @@ namespace TravelConnect.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<DateTime>("LastModifiedOn")
-                        .HasColumnType("datetime2");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("GETDATE()");
 
                     b.Property<bool>("State")
                         .HasColumnType("bit");

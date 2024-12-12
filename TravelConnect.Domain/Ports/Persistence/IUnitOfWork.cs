@@ -1,6 +1,6 @@
 ﻿namespace TravelConnect.Domain.Ports.Persistence;
 public interface IUnitOfWork
 {
-    Task CommitAsync();
-    Task RollbackAsync();
+    Task<int> CommitAsync();
+    void Rollback();
 }

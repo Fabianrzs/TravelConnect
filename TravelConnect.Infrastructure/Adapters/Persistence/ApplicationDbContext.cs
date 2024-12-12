@@ -2,7 +2,7 @@
 using TravelConnect.Domain.Entities;
 using TravelConnect.Domain.Entities.Base;
 
-namespace TravelConnect.Infrastructure.Adapters.Persistence.DbContexts;
+namespace TravelConnect.Infrastructure.Adapters.Persistence;
 
 public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : DbContext(options)
 {
