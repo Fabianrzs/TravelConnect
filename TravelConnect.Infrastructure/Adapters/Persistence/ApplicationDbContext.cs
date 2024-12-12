@@ -13,9 +13,22 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
     public DbSet<Room> Rooms { get; set; }
     public DbSet<TravelAgent> TravelsAgents { get; set; }
 
-    public async Task CommitAsync()
+    public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        await SaveChangesAsync().ConfigureAwait(false);
+        var entries = ChangeTracker.Entries()
+            .Where(e => e.State == EntityState.Added || e.State == EntityState.Modified);
+
+        foreach (var entry in entries)
+        {
+            if (entry.State == EntityState.Added) 
+                entry.Property("CreatedOn")
+                    .CurrentValue = DateTime.UtcNow;
+            if (entry.State == EntityState.Modified) 
+                entry.Property("LastModifiedOn")
+                    .CurrentValue = DateTime.UtcNow;
+        }
+
+        return await base.SaveChangesAsync(cancellationToken);
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -23,10 +36,8 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
         foreach (var entityType in modelBuilder.Model.GetEntityTypes())
         {
             if (typeof(DomainEntity).IsAssignableFrom(entityType.ClrType))
-            {
-                modelBuilder.Entity(entityType.Name).Property<DateTime>("CreatedOn").HasDefaultValueSql("GETDATE()");
-                modelBuilder.Entity(entityType.Name).Property<DateTime>("LastModifiedOn").HasDefaultValueSql("GETDATE()");
-            }
+                modelBuilder.Entity(entityType.Name)
+                    .Property<DateTime>("CreatedOn").HasDefaultValueSql("GETDATE()");
         }
 
         base.OnModelCreating(modelBuilder);

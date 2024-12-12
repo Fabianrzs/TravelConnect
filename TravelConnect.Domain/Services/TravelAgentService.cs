@@ -25,7 +25,7 @@ public class TravelAgentService( IRepository<TravelAgent> repository, IUnitOfWor
 
         var agent = new TravelAgent
         {
-            Username = request.Username,
+            Username = encryptedAgencyName,
             PasswordHash = hashedPassword,
             IsActive = true,
         };
