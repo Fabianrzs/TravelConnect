@@ -7,7 +7,7 @@ public class Address
     public string State { get; }
     public string ZipCode { get; }
 
-    public Address(string street, City city, string state, string zipCode)
+    public Address(string street, string city, string state, string zipCode)
     {
         if (string.IsNullOrWhiteSpace(street))
             throw new ArgumentException("Street cannot be empty.", nameof(street));
