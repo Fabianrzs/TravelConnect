@@ -10,22 +10,20 @@ public static class Startup
 {
     public static void AddInfrastructure(this IServiceCollection services, IConfiguration config)
     {
-        services.AddPesistence(config);
+        services.AddPesistenceServices(config);
         services.AddDomainServices();
-        services.AddJwtSettings(config);
-        services.AddMediator();
-        services.AddMapper();
-        services.AddValidator();
-        services.AddSwagger();
-        services.AddCorsPolicy();
+        services.AddSecurityServices(config);
+        services.AddMapperServices();
+        services.AddSwaggerServices();
+        services.AddCorsPolicyServices();
         services.AddControllers();
     }
 
     public static void UseInfrastructure(this WebApplication app, IWebHostEnvironment env)
     {
-        app.UseCorsPolicy();
-        app.UseSwaggers(env);
-        app.UseExceptionMiddleware();
+        app.UseCorsPolicyApp();
+        app.UseSwaggerApp(env);
+        app.UseExceptionMiddlewareApp();
         app.UseAuthentication();
         app.UseAuthorization();
         app.UseHttpsRedirection();

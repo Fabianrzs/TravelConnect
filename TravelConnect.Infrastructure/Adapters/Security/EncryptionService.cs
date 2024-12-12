@@ -13,7 +13,7 @@ public class EncryptionService(string encryptionKey) : IEncryptionService
         using var aes = Aes.Create();
         var key = Encoding.UTF8.GetBytes(_encryptionKey.PadRight(32));
         aes.Key = key;
-        aes.IV = new byte[16]; // Vector de inicialización en cero
+        aes.IV = new byte[16];
 
         using var encryptor = aes.CreateEncryptor(aes.Key, aes.IV);
         using var ms = new MemoryStream();

@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35122.118
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelConnect.Domain", "TravelConnect.Domain\TravelConnect.Domain.csproj", "{CDD13FD1-6CE6-4B51-B761-1DC64993F494}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelConnect.Domain", "TravelConnect.Domain\TravelConnect.Domain.csproj", "{CDD13FD1-6CE6-4B51-B761-1DC64993F494}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelConnect.Infrastructure", "TravelConnect.Infrastructure\TravelConnect.Infrastructure.csproj", "{7A6237F9-02F1-414C-B060-AA1B5FD1EDF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelConnect.Infrastructure", "TravelConnect.Infrastructure\TravelConnect.Infrastructure.csproj", "{7A6237F9-02F1-414C-B060-AA1B5FD1EDF5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{50A6C15B-CD24-4532-A6C2-6ED603D55FEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,6 +26,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CDD13FD1-6CE6-4B51-B761-1DC64993F494} = {50A6C15B-CD24-4532-A6C2-6ED603D55FEA}
+		{7A6237F9-02F1-414C-B060-AA1B5FD1EDF5} = {50A6C15B-CD24-4532-A6C2-6ED603D55FEA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5DF846DE-85FF-4268-AE32-EF4F4CD6F421}
