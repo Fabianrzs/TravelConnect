@@ -1,25 +1,32 @@
-﻿using TravelConnect.Domain.Entities;
+﻿using AutoMapper;
+using TravelConnect.Commons.Models.Request;
+using TravelConnect.Commons.Models.Response;
+using TravelConnect.Domain.Entities;
 using TravelConnect.Domain.Exceptions;
 using TravelConnect.Domain.Ports.Persistence;
 using TravelConnect.Domain.Services;
 
 namespace TravelConnect.Application.Services;
 [DomainService]
-public class HotelService(IRepository<Hotel> hotelRepository, IUnitOfWork unitOfWork)
+public class HotelService(IRepository<Hotel> hotelRepository, IUnitOfWork unitOfWork, IMapper mapper)
 {
-    public async Task<IEnumerable<Hotel>> GetAllHotelsAsync()
+    public async Task<IEnumerable<HotelResponse>> GetAllHotelsAsync()
     {
-        return await hotelRepository.GetAllAsync();
+        var result =  await hotelRepository.GetAllAsync();
+        return mapper.Map<IEnumerable<HotelResponse>>(result);
     }
 
-    public async Task<Hotel> GetHotelByIdAsync(Guid id)
+    public async Task<HotelResponse> GetHotelByIdAsync(Guid id)
     {
         var hotel = await hotelRepository.GetByIdAsync(id);
-        return hotel ?? throw new NotFoundException("Hotel", id);
+            if (hotel == null)
+                throw new NotFoundException("Hotel", id);
+        return mapper.Map<HotelResponse>(hotel);    
     }
     /*El sistema deberá permitir crear un nuevo hotel*/
-    public async Task CreateHotelAsync(Hotel hotel)
+    public async Task CreateHotelAsync(HotelRequest hotelRequest)
     {
+        Hotel hotel = mapper.Map<Hotel>(hotelRequest);
         await hotelRepository.AddAsync(hotel);
         await unitOfWork.CommitAsync();
     }
