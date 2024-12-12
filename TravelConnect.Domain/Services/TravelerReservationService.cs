@@ -51,7 +51,7 @@ public class TravelerReservationService(
         if (checkIn >= checkOut)
             throw new BusinessRuleViolationException("Check-in date must be before check-out date.");
 
-        if (!guests.Any())
+        if (guests.Count == 0)
             throw new BusinessRuleViolationException("At least one guest must be provided.");
 
         return new Reservation
