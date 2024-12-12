@@ -1,6 +1,6 @@
 ﻿using TravelConnect.Domain.Entities;
 using TravelConnect.Domain.Exceptions;
-using TravelConnect.Domain.Ports;
+using TravelConnect.Domain.Ports.Persistence;
 
 namespace TravelConnect.Application.Services;
 

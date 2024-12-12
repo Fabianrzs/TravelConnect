@@ -1,4 +1,4 @@
-﻿namespace TravelConnect.Domain.Ports;
+﻿namespace TravelConnect.Domain.Ports.Notifications;
 public interface INotificationService
 {
     Task SendEmailAsync(string to, string subject, string body);

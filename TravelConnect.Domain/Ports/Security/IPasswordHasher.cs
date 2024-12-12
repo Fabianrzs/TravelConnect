@@ -1,4 +1,4 @@
-﻿namespace TravelConnect.Domain.Ports;
+﻿namespace TravelConnect.Domain.Ports.Security;
 public interface IPasswordHasher
 {
     string HashPassword(string password);
