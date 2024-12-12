@@ -1,9 +1,10 @@
 ﻿using TravelConnect.Domain.Entities;
 using TravelConnect.Domain.Exceptions;
-using TravelConnect.Domain.Ports;
+using TravelConnect.Domain.Ports.Persistence;
+using TravelConnect.Domain.Services;
 
 namespace TravelConnect.Application.Services;
-
+[DomainService]
 public class RoomService(IRepository<Room> roomRepository, IUnitOfWork unitOfWork)
 {
     /*Habitaciones por Hotel*/
