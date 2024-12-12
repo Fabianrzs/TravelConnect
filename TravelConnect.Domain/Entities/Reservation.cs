@@ -7,7 +7,7 @@ public class Reservation : EntityBase
 {
     public Guid HotelId { get; set; }
     public Guid RoomId { get; set; }
-    public List<Guest> Guests { get; set; } = new();
+    public List<Guest> Guests { get; set; } = [];
     public EmergencyContact EmergencyContact { get; set; } = null!;
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
