@@ -19,9 +19,7 @@ public class HotelService(IRepository<Hotel> hotelRepository, IUnitOfWork unitOf
     public async Task<HotelResponse> GetHotelByIdAsync(Guid id)
     {
         var hotel = await hotelRepository.GetByIdAsync(id);
-            if (hotel == null)
-                throw new NotFoundException("Hotel", id);
-        return mapper.Map<HotelResponse>(hotel);    
+        return hotel == null ? throw new NotFoundException("Hotel", id) : mapper.Map<HotelResponse>(hotel);
     }
     /*El sistema deberá permitir crear un nuevo hotel*/
     public async Task CreateHotelAsync(HotelRequest hotelRequest)
@@ -39,16 +37,16 @@ public class HotelService(IRepository<Hotel> hotelRepository, IUnitOfWork unitOf
     /*El sistema me deberá permitir deshabilitar cada uno de los hoteles*/
     public async Task DisableHotelAsync(Guid id)
     {
-        var hotel = await GetHotelByIdAsync(id);
-        hotel.Disable();
+        var hotel = await hotelRepository.GetByIdAsync(id);
+        hotel!.Disable();
         await hotelRepository.UpdateAsync(hotel);
         await unitOfWork.CommitAsync();
     }
     /*El sistema me deberá permitir habilitar cada uno de los hoteles*/
     public async Task EnaleHotelAsync(Guid id)
     {
-        var hotel = await GetHotelByIdAsync(id);
-        hotel.Enable();
+        var hotel = await hotelRepository.GetByIdAsync(id);
+        hotel!.Enable();
         await hotelRepository.UpdateAsync(hotel);
         await unitOfWork.CommitAsync();
     }

@@ -7,33 +7,24 @@ using System.Text.Json;
 
 namespace TravelConnect.Infrastructure.Middleware;
 
-public class ExceptionMiddleware
+public class ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
 {
-    private readonly RequestDelegate _next;
-    private readonly ILogger<ExceptionMiddleware> _logger;
-
-    public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
-    {
-        _next = next;
-        _logger = logger;
-    }
-
     public async Task InvokeAsync(HttpContext context)
     {
         try
         {
-            _logger.LogInformation("Handling request: {Name}", context.Request.Path);
-            await _next(context);
+            logger.LogInformation("Handling request: {Name}", context.Request.Path);
+            await next(context);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "An unhandled exception has occurred: {Name}", ex.Message);
-            _logger.LogError(ex, "StackTrace: {Name}", ex.StackTrace);
+            logger.LogError(ex, "An unhandled exception has occurred: {Name}", ex.Message);
+            logger.LogError(ex, "StackTrace: {Name}", ex.StackTrace);
             await GetResult(ex, context);
         }
         finally
         {
-            _logger.LogInformation("Finished handling request.");
+            logger.LogInformation("Finished handling request.");
         }
     }
 

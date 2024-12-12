@@ -11,8 +11,8 @@ public class HotelMappingProfile : Profile
     public HotelMappingProfile()
     {
         CreateMap<HotelRequest, Hotel>()
-            .ForMember(dest => dest.Address, opt => opt.MapFrom(src =>
-                new Address(src.Street, src.City, src.State, src.ZipCode)))
+            //.ForMember(dest => dest.Address, opt => opt.MapFrom(src =>
+            //    new Address(src.Street, src.City, src.State, src.ZipCode)))
             .ForMember(dest => dest.Rooms, opt => opt.Ignore()); 
 
         CreateMap<Hotel, HotelResponse>()

@@ -12,7 +12,7 @@ public class Guest : EntityBase
     public Gender Gender { get; set; }
     public string DocumentType { get; set; } = string.Empty;
     public string DocumentNumber { get; set; } = string.Empty;
-    public Email Email { get; set; } = new();
+    public string Email { get; set; } = string.Empty;
     public string PhoneNumber { get; set; } = string.Empty;
     public Guid ReservationId { get; set; }
     public Reservation Reservation { get; set; } = new();
