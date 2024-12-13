@@ -2,6 +2,7 @@
 
 public class RoomRequest
 {
+    public Guid? Id { get; set; } 
     public Guid HotelId { get; set; } 
     public string RoomType { get; set; } = string.Empty;
     public decimal BaseCost { get; set; } 

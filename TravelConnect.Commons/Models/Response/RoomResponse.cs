@@ -3,10 +3,11 @@
 public class RoomResponse
 {
     public Guid Id { get; set; }
-    public string RoomType { get; set; } = string.Empty; // Ejemplo: Single, Double, Suite
+    public string HotelName { get; set; } = string.Empty;
+    public string RoomType { get; set; } = string.Empty; 
     public decimal BaseCost { get; set; }
     public decimal Taxes { get; set; }
     public bool IsEnabled { get; set; }
-    public string Location { get; set; } = string.Empty; // Ubicación de la habitación (Ej: Piso, Edificio)
+    public string Location { get; set; } = string.Empty;
     public bool HasActiveReservations { get; set; } 
 }

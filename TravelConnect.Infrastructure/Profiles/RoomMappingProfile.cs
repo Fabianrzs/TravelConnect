@@ -3,6 +3,7 @@ using TravelConnect.Commons.Models.Request;
 using TravelConnect.Commons.Models.Response;
 using TravelConnect.Domain.Entities;
 using TravelConnect.Domain.Enums;
+using TravelConnect.Domain.Extensions;
 
 namespace TravelConnect.Infrastructure.Profiles;
 
@@ -12,14 +13,11 @@ public class RoomMappingProfile : Profile
     {
         CreateMap<RoomRequest, Room>()
                 .ForMember(dest => dest.RoomType, opt => opt.MapFrom(src => Enum.Parse<RoomType>(src.RoomType, true)))
-                .ForMember(dest => dest.IsEnabled, opt => opt.MapFrom(src => src.IsEnabled))
-                .ForMember(dest => dest.Reservations, opt => opt.Ignore());
-
-                
-                
+                .ReverseMap();                
 
         CreateMap<Room, RoomResponse>()
-            .ForMember(dest => dest.RoomType, opt => opt.MapFrom(src => src.RoomType.ToString()))
+            .ForMember(dest => dest.RoomType, opt => opt.MapFrom(src => src.RoomType.ToFriendlyString()))
+            .ForMember(dest => dest.HotelName, opt => opt.MapFrom(src => src.Hotel.Name))
             .ForMember(dest => dest.HasActiveReservations, opt => opt.MapFrom(src => src.HasActiveReservations()));
     }
 }

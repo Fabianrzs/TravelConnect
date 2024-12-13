@@ -24,6 +24,6 @@ public class ReservationService(
     /* El sistema deberá listar cada una de las reservas realizadas en mis hoteles */
     public async Task<IEnumerable<Reservation>> GetReservationsByHotelAsync(Guid hotelId)
     {
-        return await reservationRepository.FindAsync(r => r.Room.HotelId == hotelId);
+        return await reservationRepository.FindAsync(r => r.Room.HotelId == hotelId, r => r.Room, r => r.Room.Hotel);
     }
 }
