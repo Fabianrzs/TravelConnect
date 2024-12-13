@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 using TravelConnect.Application.Services;
+using TravelConnect.Commons.Models.Request;
 using TravelConnect.Domain.Entities;
 
 namespace TravelConnect.API.Controllers;
@@ -56,7 +57,7 @@ public class TravelerReservationController(TravelerReservationService reservatio
     [HttpPost("complete")]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> CompleteReservation([FromBody] Reservation reservation)
+    public async Task<IActionResult> CompleteReservation([FromBody] ReservationRequest reservation)
     {
         if (reservation == null)
             return BadRequest(new { Message = "Reservation data is required." });

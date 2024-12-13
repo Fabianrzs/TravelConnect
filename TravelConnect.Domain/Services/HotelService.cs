@@ -32,14 +32,11 @@ public class HotelService(IRepository<Hotel> hotelRepository, IUnitOfWork unitOf
         Hotel hotel = (await hotelRepository.GetByIdAsync(hotelId, h => h.Address))
                 ?? throw new ArgumentException($"Hotel with Id {hotelId} not found.");
         hotel.Name = hotelRequest.Name;
-        hotel.Address = new Address
-        {
-            Id = hotel.Address?.Id ?? Guid.NewGuid(),
-            Street = hotelRequest.Street,
-            City = hotelRequest.City,
-            StateAdrees = hotelRequest.StateAddress,
-            ZipCode = hotelRequest.ZipCode
-        };
+
+        hotel.Address.Street = hotelRequest.Street;
+        hotel.Address.City = hotelRequest.City;
+        hotel.Address.StateAdrees = hotelRequest.StateAddress;
+        hotel.Address.ZipCode = hotelRequest.ZipCode;
 
         await hotelRepository.UpdateAsync(hotel);
         await unitOfWork.CommitAsync();

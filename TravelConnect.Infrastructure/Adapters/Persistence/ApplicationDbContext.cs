@@ -33,6 +33,31 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+
+        modelBuilder.Entity<Room>()
+            .HasOne(r => r.Hotel)
+            .WithMany(h => h.Rooms)
+            .HasForeignKey(r => r.HotelId)
+            .IsRequired();
+
+        modelBuilder.Entity<Reservation>()
+            .HasOne(r => r.Room)
+            .WithMany(rm => rm.Reservations)
+            .HasForeignKey(r => r.RoomId)
+            .IsRequired();
+
+        modelBuilder.Entity<Reservation>()
+            .HasOne(r => r.EmergencyContact)
+            .WithOne()
+            .HasForeignKey<Reservation>(r => r.EmergencyContactId)
+            .IsRequired();
+
+        modelBuilder.Entity<Guest>()
+            .HasOne(g => g.Reservation)
+            .WithMany(r => r.Guests)
+            .HasForeignKey(g => g.ReservationId)
+            .IsRequired();
+
         foreach (var entityType in modelBuilder.Model.GetEntityTypes())
         {
             if (typeof(DomainEntity).IsAssignableFrom(entityType.ClrType))

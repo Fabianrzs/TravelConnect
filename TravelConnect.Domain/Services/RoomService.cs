@@ -24,7 +24,7 @@ public class RoomService(IRepository<Room> roomRepository, IUnitOfWork unitOfWor
     public async Task UpdateRoomAsync(Guid roomId, RoomRequest roomRequest)
     {
         var room = await roomRepository.GetByIdAsync(roomId, r => r.Reservations, r => r.Hotel)
-            ?? throw new ArgumentException($"Hotel with Id {roomId} not found.");
+            ?? throw new ArgumentException($"Rooms with Id {roomId} not found.");
        
         room.UpdateDetails(roomRequest.BaseCost, roomRequest.Taxes, roomRequest.RoomType, roomRequest.Location);
         

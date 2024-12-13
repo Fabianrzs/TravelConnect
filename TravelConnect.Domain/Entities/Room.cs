@@ -65,5 +65,10 @@ namespace TravelConnect.Domain.Entities
                 r.StartDate < checkOut && 
                 r.EndDate > checkIn); 
         }
+
+        public decimal CalculateCost(DateTime checkIn, DateTime checkOut)
+        {
+            return (BaseCost * (checkOut - checkIn).Days) + Taxes;
+        }
     }
 }
