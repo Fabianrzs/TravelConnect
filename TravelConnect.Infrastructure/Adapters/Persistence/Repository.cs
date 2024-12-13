@@ -16,14 +16,30 @@ public class Repository<T> : IRepository<T> where T : EntityBase
         dbSet = _context.Set<T>();
     }
 
-    public async Task<T?> GetByIdAsync(Guid id)
+    public async Task<T?> GetByIdAsync(Guid id, params Expression<Func<T, object>>[] includes)
     {
-        return await dbSet.FindAsync(id);
+        IQueryable<T> query = dbSet;
+
+        // Agrega las relaciones incluidas explícitamente
+        foreach (var include in includes)
+        {
+            query = query.Include(include);
+        }
+
+        return await query.FirstOrDefaultAsync(entity => entity.Id == id);
     }
 
-    public async Task<IEnumerable<T>> GetAllAsync()
+    public async Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] includes)
     {
-        return await dbSet.ToListAsync();
+        IQueryable<T> query = dbSet;
+
+        // Agrega las relaciones incluidas explícitamente
+        foreach (var include in includes)
+        {
+            query = query.Include(include);
+        }
+
+        return await query.ToListAsync();
     }
 
     public async Task AddAsync(T entity)
@@ -41,11 +57,18 @@ public class Repository<T> : IRepository<T> where T : EntityBase
     {
         dbSet.Remove(entity);
         return Task.CompletedTask;
-
     }
 
-    public Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate)
+    public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includes)
     {
-        return Task.FromResult<IEnumerable<T>>([.. dbSet.Where(predicate)]);
+        IQueryable<T> query = dbSet.Where(predicate);
+
+        // Agrega las relaciones incluidas explícitamente
+        foreach (var include in includes)
+        {
+            query = query.Include(include);
+        }
+
+        return await query.ToListAsync();
     }
 }

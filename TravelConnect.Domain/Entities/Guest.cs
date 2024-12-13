@@ -15,5 +15,5 @@ public class Guest : EntityBase
     public string Email { get; set; } = string.Empty;
     public string PhoneNumber { get; set; } = string.Empty;
     public Guid ReservationId { get; set; }
-    public Reservation Reservation { get; set; } = new();
+    public virtual Reservation Reservation { get; set; } = new();
 }

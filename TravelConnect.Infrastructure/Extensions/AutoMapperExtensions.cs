@@ -6,7 +6,7 @@ public static class AutoMapperExtensions
 {
     public static IServiceCollection AddMapperServices(this IServiceCollection services)
     {
-        services.AddAutoMapper(AppAssembly.ApplicationAssembly);
+        services.AddAutoMapper(AppAssembly.InfrastructureAssembly);
         return services;
     }
 }

@@ -13,10 +13,10 @@ public class RoomMappingProfile : Profile
         CreateMap<RoomRequest, Room>()
                 .ForMember(dest => dest.RoomType, opt => opt.MapFrom(src => Enum.Parse<RoomType>(src.RoomType, true)))
                 .ForMember(dest => dest.IsEnabled, opt => opt.MapFrom(src => src.IsEnabled))
-                .ForMember(dest => dest.Reservations, opt => opt.Ignore()) 
+                .ForMember(dest => dest.Reservations, opt => opt.Ignore());
 
                 
-                .AfterMap((src, dest) => dest.Initialize(src.HotelId, Enum.Parse<RoomType>(src.RoomType, true), src.BaseCost, src.Taxes, src.Location));
+                
 
         CreateMap<Room, RoomResponse>()
             .ForMember(dest => dest.RoomType, opt => opt.MapFrom(src => src.RoomType.ToString()))

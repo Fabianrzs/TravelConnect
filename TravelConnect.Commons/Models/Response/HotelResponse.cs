@@ -9,5 +9,5 @@ public class HotelResponse
     public string State { get; set; } = string.Empty;
     public string ZipCode { get; set; } = string.Empty;
     public bool IsEnabled { get; set; }
-    public List<RoomResponse> Rooms { get; set; } = new();
+    public List<RoomResponse> Rooms { get; set; } = [];
 }

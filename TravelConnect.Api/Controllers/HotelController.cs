@@ -3,7 +3,6 @@ using System.Net.Mime;
 using TravelConnect.Application.Services;
 using TravelConnect.Commons.Models.Request;
 using TravelConnect.Commons.Models.Response;
-using TravelConnect.Domain.Entities;
 
 namespace TravelConnect.API.Controllers;
 
@@ -12,32 +11,6 @@ namespace TravelConnect.API.Controllers;
 [Produces(MediaTypeNames.Application.Json)]
 public class HotelController(HotelService hotelService) : ControllerBase
 {
-    /// <summary>
-    /// Obtiene todos los hoteles.
-    /// </summary>
-    /// <returns>Lista de hoteles.</returns>
-    [HttpGet]
-    [ProducesResponseType(typeof(IEnumerable<HotelResponse>), StatusCodes.Status200OK)]
-    public async Task<IActionResult> GetAllHotels()
-    {
-        var response = await hotelService.GetAllHotelsAsync();
-        return Ok(response);
-    }
-
-    /// <summary>
-    /// Obtiene un hotel por su ID.
-    /// </summary>
-    /// <param name="id">Identificador único del hotel.</param>
-    /// <returns>Información del hotel.</returns>
-    [HttpGet("{id:guid}")]
-    [ProducesResponseType(typeof(HotelResponse), StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
-    public async Task<IActionResult> GetHotelById(Guid id)
-    {
-        var response = await hotelService.GetHotelByIdAsync(id);
-        return Ok(response);
-    }
-
     /// <summary>
     /// Crea un nuevo hotel.
     /// </summary>
@@ -60,9 +33,9 @@ public class HotelController(HotelService hotelService) : ControllerBase
     [HttpPut]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<IActionResult> UpdateHotel([FromBody] Hotel hotel)
+    public async Task<IActionResult> UpdateHotel([FromBody] HotelRequest hotelm, Guid hotelId)
     {
-        await hotelService.UpdateHotelAsync(hotel);
+        await hotelService.UpdateHotelAsync(hotelId, hotelm);
         return NoContent();
     }
 
@@ -92,5 +65,31 @@ public class HotelController(HotelService hotelService) : ControllerBase
     {
         await hotelService.EnaleHotelAsync(id);
         return NoContent();
+    }
+
+    /// <summary>
+    /// Obtiene todos los hoteles.
+    /// </summary>
+    /// <returns>Lista de hoteles.</returns>
+    [HttpGet]
+    [ProducesResponseType(typeof(IEnumerable<HotelResponse>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> GetAllHotels()
+    {
+        var response = await hotelService.GetAllHotelsAsync();
+        return Ok(response);
+    }
+
+    /// <summary>
+    /// Obtiene un hotel por su ID.
+    /// </summary>
+    /// <param name="id">Identificador único del hotel.</param>
+    /// <returns>Información del hotel.</returns>
+    [HttpGet("{id:guid}")]
+    [ProducesResponseType(typeof(HotelResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<IActionResult> GetHotelById(Guid id)
+    {
+        var response = await hotelService.GetHotelByIdAsync(id);
+        return Ok(response);
     }
 }

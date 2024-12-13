@@ -5,10 +5,10 @@ namespace TravelConnect.Domain.Entities;
 
 public class Reservation : EntityBase
 {
-    public Guid HotelId { get; set; }
     public Guid RoomId { get; set; }
-    public List<Guest> Guests { get; set; } = [];
-    public EmergencyContact EmergencyContact { get; set; } = null!;
+    public virtual Room Room { get; set; } = new();
+    public virtual List<Guest> Guests { get; set; } = [];
+    public virtual EmergencyContact EmergencyContact { get; set; } = new();
     public DateTime StartDate { get; set; }
     public DateTime EndDate { get; set; }
     public decimal TotalCost { get; set; }
