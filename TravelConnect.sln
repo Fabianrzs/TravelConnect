@@ -9,9 +9,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelConnect.Infrastructur
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{50A6C15B-CD24-4532-A6C2-6ED603D55FEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelConnect.Commons", "TravelConnect.Commons\TravelConnect.Commons.csproj", "{EDD367E2-BB6F-4E93-B66F-67E1C3964605}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelConnect.Commons", "TravelConnect.Commons\TravelConnect.Commons.csproj", "{EDD367E2-BB6F-4E93-B66F-67E1C3964605}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelConnect.Api", "TravelConnect.Api\TravelConnect.Api.csproj", "{4FA8C29E-71BA-493C-BEA9-D5143065E6A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TravelConnect.Api", "TravelConnect.Api\TravelConnect.Api.csproj", "{4FA8C29E-71BA-493C-BEA9-D5143065E6A0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{88DE5040-983D-4833-B6A4-11101C0D3D05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{C91F5B9E-058A-4AB3-9183-822A4009C919}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +39,10 @@ Global
 		{4FA8C29E-71BA-493C-BEA9-D5143065E6A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FA8C29E-71BA-493C-BEA9-D5143065E6A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FA8C29E-71BA-493C-BEA9-D5143065E6A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C91F5B9E-058A-4AB3-9183-822A4009C919}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C91F5B9E-058A-4AB3-9183-822A4009C919}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C91F5B9E-058A-4AB3-9183-822A4009C919}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C91F5B9E-058A-4AB3-9183-822A4009C919}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +52,7 @@ Global
 		{7A6237F9-02F1-414C-B060-AA1B5FD1EDF5} = {50A6C15B-CD24-4532-A6C2-6ED603D55FEA}
 		{EDD367E2-BB6F-4E93-B66F-67E1C3964605} = {50A6C15B-CD24-4532-A6C2-6ED603D55FEA}
 		{4FA8C29E-71BA-493C-BEA9-D5143065E6A0} = {50A6C15B-CD24-4532-A6C2-6ED603D55FEA}
+		{C91F5B9E-058A-4AB3-9183-822A4009C919} = {88DE5040-983D-4833-B6A4-11101C0D3D05}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5DF846DE-85FF-4268-AE32-EF4F4CD6F421}
