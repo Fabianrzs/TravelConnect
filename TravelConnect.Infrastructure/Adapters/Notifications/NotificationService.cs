@@ -9,8 +9,8 @@ public class NotificationService(IConfiguration configuration) : INotificationSe
 {
     private readonly string smtpHost = configuration["EmailSettings:SmtpHost"]!;
     private readonly int smtpPort = int.Parse(configuration["EmailSettings:SmtpPort"]!);
-    private readonly string smtpUser = configuration["EmailSettings:SmtpUser"]!;
-    private readonly string smtpPassword = configuration["EmailSettings:SmtpPassword"]!;
+    private readonly string smtpUser = configuration["TravelConnect.EmailSettings-SmtpUser"]!;
+    private readonly string smtpPassword = configuration["TravelConnect.EmailSettings-SmtpPassword"]!;
 
     public async Task SendEmailAsync(string to, string subject, string body)
     {

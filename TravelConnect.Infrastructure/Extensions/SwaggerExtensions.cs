@@ -38,7 +38,7 @@ public static class SwaggerExtensions
         return services;
     }
 
-    public static IApplicationBuilder UseSwaggerApp(this IApplicationBuilder app, IWebHostEnvironment env)
+    public static IApplicationBuilder UseSwaggerApp(this IApplicationBuilder app)
     {
         app.UseSwagger();
         app.UseSwaggerUI();
