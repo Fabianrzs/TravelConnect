@@ -8,11 +8,12 @@ namespace TravelConnect.Infrastructure;
 
 public static class Startup
 {
-    public static void AddInfrastructure(this IServiceCollection services, IConfiguration config)
+    public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddPesistenceServices(config);
+
+        services.AddPesistenceServices(configuration);
         services.AddDomainServices();
-        services.AddSecurityServices(config);
+        services.AddSecurityServices(configuration);
         services.AddMapperServices();
         services.AddSwaggerServices();
         services.AddCorsPolicyServices();

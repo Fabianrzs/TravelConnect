@@ -12,9 +12,8 @@ public static class SecurityExtensions
 {
     public static IServiceCollection AddSecurityServices(this IServiceCollection services, IConfiguration configuration)
     {
-        var fuap = configuration["JwtSettings:Key"]!;
-        var fuap1 = configuration["JwtSettings:Issuer"]!;
-        var fuap2 = configuration["JwtSettings:Audience"];
+        var jwtSettingKey = configuration["TravelConnect.JwtSettings-Key"]!;
+        var encriptionKey = configuration["TravelConnect.Encryption-Key"]!;
 
         services.AddScoped<IPasswordHasher, PasswordHasher>();
 
@@ -32,19 +31,19 @@ public static class SecurityExtensions
                 ClockSkew = TimeSpan.Zero,
                 ValidIssuer = configuration["JwtSettings:Issuer"],
                 ValidAudience = configuration["JwtSettings:Audience"],
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtSettings:Key"]!))
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettingKey!))
             };
         });
 
         services.AddScoped<ITokenService>(provider =>
             new TokenService(
-                configuration["JwtSettings:Key"]!,
+                jwtSettingKey,
                 configuration["JwtSettings:Issuer"]!,
                 configuration["JwtSettings:Audience"]!
             ));
 
         services.AddScoped<IEncryptionService>(provider =>
-            new EncryptionService(configuration["Encryption:Key"]!));
+            new EncryptionService(encriptionKey));
 
         return services;
     }

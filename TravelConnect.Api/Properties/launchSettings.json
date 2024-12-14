@@ -16,7 +16,9 @@
       "launchUrl": "swagger",
       "applicationUrl": "http://localhost:5175",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "APP_CONFIG_LABEL": "Local",
+        "APP_CONFIG_ENDPOINT": ""
       }
     },
     "https": {
@@ -26,7 +28,9 @@
       "launchUrl": "swagger",
       "applicationUrl": "https://localhost:7077;http://localhost:5175",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "APP_CONFIG_LABEL": "Local",
+        "APP_CONFIG_ENDPOINT": ""
       }
     },
     "IIS Express": {
