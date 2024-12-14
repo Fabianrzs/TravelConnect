@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TravelConnect.Infrastructure.Extensions;
@@ -20,10 +19,10 @@ public static class Startup
         services.AddControllers();
     }
 
-    public static void UseInfrastructure(this WebApplication app, IWebHostEnvironment env)
+    public static void UseInfrastructure(this WebApplication app)
     {
         app.UseCorsPolicyApp();
-        app.UseSwaggerApp(env);
+        app.UseSwaggerApp();
         app.UseExceptionMiddlewareApp();
         app.UseAuthentication();
         app.UseAuthorization();
